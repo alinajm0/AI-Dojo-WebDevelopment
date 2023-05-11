@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello World!</h1>
+        <button @click="increment">clicked {{ count }} Times</button>
+        <input v-model="name" type="text" placeholder="Your Name">
+        <input v-model="url" type="text" placeholder="The Url">
+        <img :src="avaterImgUrl">
+        <p>Name is {{ name}}</p>
+        <a :href="url">Click this Link</a>
+        <input :value="name" type="text" placeholder="this value input">
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue
+        createApp({
+            data () {
+                return {
+                    count : 0,
+                    name : "",
+                    url :""
+                }
+            },
+            methods: {
+                increment(){
+                    this.count++
+                }
+            },
+            computed: {
+                avaterImgUrl() {
+                    
+                    return 'https://ui-avatars.com/api/?name='+this.name;
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
